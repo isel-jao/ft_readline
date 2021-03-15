@@ -3,6 +3,7 @@
 
 # Object files
 *.o
+*/*.o
 *.ko
 *.obj
 *.elf
@@ -17,6 +18,7 @@
 *.pch
 
 # Libraries
+readline
 *.lib
 *.a
 *.la
@@ -29,6 +31,7 @@
 *.dylib
 
 # Executables
+test
 *.exe
 *.out
 *.app
@@ -50,3 +53,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+.ms_history
