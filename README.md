@@ -13,3 +13,9 @@ down		new cmd
 CTRL_U		clear line
 CTRL_L		clear terminal
 CTRL_D		set exit status to treu if line is empty
+
+### test
+make test
+
+### history file
+./ms_history
