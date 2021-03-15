@@ -18,4 +18,4 @@ CTRL_D		set exit status to treu if line is empty
 make test
 
 ### history file
-./ms_history
+./.ms_history
