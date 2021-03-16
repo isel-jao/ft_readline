@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:48:07 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:51:11 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 17:47:22 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,23 @@ void get_cursor_start_pos(t_line *line)
   line->start.col = ft_atoi(answer + i + 1);
 }
 
-void input_loop(char *prompt, t_line *line, int *ms_exit)
+void input_loop(char *prompt, t_line *line, int *ms_exit, int *ms_ret)
 {
   int key_pressed;
 
   while (42)
   {
-    key_pressed = 0;
+    // key_pressed = 0;
     key_pressed = get_key();
+    // ft_putnbr_fd(key_pressed, 0);
+    // sleep(1);
     // printf("%x ", key_pressed);
+    // sleep(1);
+    // if (g_sig.exit_status == 1)
+    // {
+    //   line->cmd[0] = 0;
+    //   exit(0);
+    // }
     ft_getwinsz(&line->winsz);
     if (line->start.row + line->cursor / line->winsz.col > line->winsz.row)
       line->start.row--;
@@ -59,6 +67,12 @@ void input_loop(char *prompt, t_line *line, int *ms_exit)
     if (key_pressed == CTRL_D && line->cmd[0] == 0)
     {
       *line->exit = 1;
+      break;
+    }
+    if (key_pressed == CTRL_C)
+    {
+      line->cmd[0] = 0;
+      *ms_ret = 1;
       break;
     }
     if (key_pressed == '\n')
@@ -76,7 +90,7 @@ void rest_tail(t_line line)
   }
 }
 
-char *ft_readline(char *prompt, t_list *hist, int *ms_exit)
+char *ft_readline(char *prompt, t_list *hist, int *ms_exit, int *ms_ret)
 {
   struct termios oldattr;
   t_line line;
@@ -89,7 +103,7 @@ char *ft_readline(char *prompt, t_list *hist, int *ms_exit)
   line.hist_size = ft_lstsize(line.hist);
   setup_terminal(&oldattr);
   get_cursor_start_pos(&line);
-  input_loop(prompt, &line, ms_exit);
+  input_loop(prompt, &line, ms_exit, ms_ret);
   rest_tail(line);
   // reset terminal attribute
   tcsetattr(STDIN_FILENO, TCSANOW, &oldattr);

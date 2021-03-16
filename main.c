@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 19:35:56 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:46:57 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 18:01:29 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(int argc, char const *argv[])
 {
 	int ms_exit = 0;
+	int ms_ret = 0;
 	char *line;
 	t_list *hist;
 	hist = NULL;
@@ -22,7 +23,7 @@ int main(int argc, char const *argv[])
 	hist = retrieve_history(&h_fd);
 	while (1)
 	{
-		line = ft_readline("minishell > ", hist, &ms_exit);
+		line = ft_readline("minishell > ", hist, &ms_exit, &ms_ret);
 		if (line && line[0])
 			ft_lstadd_back(&hist, ft_lstnew(line));
 		ft_putstr("\n");

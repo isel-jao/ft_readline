@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:04:35 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:41:44 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 16:16:44 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "readline.h"
+
 
 int get_key(void)
 {
@@ -22,13 +23,24 @@ int get_key(void)
 	return (key_pressed);
 }
 
+// void ctrl_l(t_line *line)
+// {
+// 	tputs(tgetstr("cl", NULL), 0, &tc_putc);
+// 	ft_putstr_fd(line->prompt, 0);
+// 	line->start.col = ft_strlen(line->prompt);
+// 	line->start.row = 0;
+// 	tputs(tgoto(tgetstr("cm", NULL), line->start.col, 0), 0, &tc_putc);
+// }
+
 void ctrl_l(t_line *line)
 {
-	tputs(tgetstr("cl", NULL), 0, &tc_putc);
-	ft_putstr_fd(line->prompt, 0);
-	line->start.col = ft_strlen(line->prompt);
-	line->start.row = 0;
-	tputs(tgoto(tgetstr("cm", NULL), line->start.col, 0), 0, &tc_putc);
+    tputs(tgetstr("cl", NULL), 0, &tc_putc);
+    ft_putstr_fd(line->prompt, 0);
+    line->start.col = ft_strlen(line->prompt) + 1;
+    line->start.row = 0;
+    ft_putstr_fd(line->cmd, 0);
+    set_curpos(line);
+    // tputs(tgoto(tgetstr("cm", NULL), line->start.col, 0), 0, &tc_putc);
 }
 void ctrl_u(t_line *line)
 {

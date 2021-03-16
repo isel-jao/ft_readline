@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 00:59:03 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:41:44 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 16:53:03 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void insert_char(t_line *line, int key)
   line->cmd[line->cursor] = key;
   line->length++;
   line->cursor++;
-  // tputs(tgetstr("im", NULL), 1, &tc_putc);
-  // ft_putchar_fd(key, 0);
-  // tputs(tgetstr("ei", NULL), 1, &tc_putc);
-  tputs(tgetstr("cd", NULL), 0, &tc_putc);
-  ft_putstr_fd(line->cmd + line->cursor - 1, 0);
+  tputs(tgetstr("im", NULL), 1, &tc_putc);
+  ft_putchar_fd(key, 0);
+  tputs(tgetstr("ei", NULL), 1, &tc_putc);
+  // tputs(tgetstr("cd", NULL), 0, &tc_putc);
+  // ft_putstr_fd(line->cmd + line->cursor - 1, 0);
   set_curpos(line);
 }
 

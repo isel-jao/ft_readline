@@ -1,12 +1,12 @@
 NAME = readline
 
 CC = gcc
-CFLAGS =  -I includes/ -I libft/includes/ 
+CFLAGS =  -I includes/ -I ../libft/includes/ 
 # CFLAGS = -Wall -Wextra -Werror -I includes/ -I libft/includes/
 
 AR      = ar rcs
 
-LIBFT = -L libft -lft
+LIBFT = -L ../libft -lft
 TERMCAP = -ltermcap  -lncurses
 
 HEADER = readline.h
@@ -35,7 +35,7 @@ all:
 
 
 $(NAME): $(OBJS)
-	@make -C libft/ --no-print-directory
+	@make -C ../libft/ --no-print-directory
 	$(AR) $(NAME) $? 
 	# @$(CC) $(CFLAGS) -o  $(NAME) $(OBJS) $(LIBFT) $(TERMCAP)
 
@@ -48,14 +48,14 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(INC_DIR)*.h
 
 clean:
 	@echo "\033[0;31mCleaning libft..."
-	@make clean -C libft/
+	@make clean -C ../libft/
 	@echo "\nRemoving binaries..."
 	@rm -rf /objs
 	@echo "\033[0m"
 
 fclean:
 	@echo "\033[0;31mCleaning libft..."
-	@make fclean -C libft/
+	@make fclean -C ../libft/
 	@echo "\nDeleting objects..."
 	@rm -rf $(OBJ_DIR)
 	@echo "\nDeleting redline libray..."

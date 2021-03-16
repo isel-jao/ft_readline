@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   readline.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:49:07 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:53:21 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 17:32:56 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINE_EDITION_H
-#define LINE_EDITION_H
+#ifndef READLINE_H
+#define READLINE_H
 
 #include "libft.h"
 #include <termcap.h>
@@ -57,6 +57,7 @@
 #define CTRL_U 0x15
 #define CTRL_L 0xc
 #define CTRL_D 0x4
+#define CTRL_C 0x3
 
 typedef struct s_keymatch
 {
@@ -106,10 +107,12 @@ struct s_keyhist
 	void (*p)(t_line *line, t_list **hist);
 };
 
+
+
 int tc_putc(int c);
 
 
-char *ft_readline(char *prompt, t_list *hist, int *ms_exit);
+char *ft_readline(char *prompt, t_list *hist, int *ms_exit, int *ms_ret);
 
 
 // terminal setup
@@ -147,6 +150,11 @@ void delete_char(t_line *line, int key);
 int get_key(void);
 void match_move(int key_pressed, t_line *line);
 void match_hist(int key_pressed, t_line *line);
+
+// signals
+void sig_init(void);
+void sig_quit(int code);
+void sig_int(int code);
 
 
 #endif

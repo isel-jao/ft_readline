@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   terminal_setup.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:45:13 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:41:44 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 17:18:13 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void setup_terminal(struct termios *oldattr)
 	struct termios newattr;
 	tcgetattr(STDIN_FILENO, oldattr);
 	newattr = *oldattr;
-	newattr.c_lflag &= ~(ICANON | ECHO);
+	newattr.c_lflag &= ~( ISIG | ICANON | ECHO);
 	// newattr.c_lflag &= ~(ICANON | ECHO | ISIG);
 	// newattr.c_oflag &= ~(OPOST);
 	init_terminal_data();
