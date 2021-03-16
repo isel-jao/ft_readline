@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
+/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 00:55:30 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/15 19:46:09 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/16 14:16:28 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void feed_line(t_line *line, char *entry)
 
 void new_hist_entry(t_line *line, t_list **hist)
 {
-	if (line->hist && !line->hist_depth)
+	if (!line->hist || !line->hist_depth)
 	{
 		return;
 	}
