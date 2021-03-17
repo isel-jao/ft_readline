@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   readline.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isel-jao  <isel-jao@student.42.f>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:49:07 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/16 17:32:56 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/17 13:00:11 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef READLINE_H
 #define READLINE_H
 
-#include "libft.h"
+#include "../../libft/includes/libft.h"
 #include <termcap.h>
 #include <term.h>
 #include <termios.h>
@@ -70,7 +70,6 @@ int get_key(void);
 typedef struct s_list
 {
 	void *content;
-	size_t content_size;
 	struct s_list *next;
 	struct s_list *prev;
 } t_list;

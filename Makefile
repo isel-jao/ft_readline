@@ -37,14 +37,10 @@ all:
 $(NAME): $(OBJS)
 	@make -C ../libft/ --no-print-directory
 	$(AR) $(NAME) $? 
-	# @$(CC) $(CFLAGS) -o  $(NAME) $(OBJS) $(LIBFT) $(TERMCAP)
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(INC_DIR)*.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-
-# 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
 	@echo "\033[0;31mCleaning libft..."
