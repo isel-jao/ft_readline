@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:04:35 by isel-jao          #+#    #+#             */
-/*   Updated: 2021/03/16 16:16:44 by isel-jao         ###   ########.fr       */
+/*   Updated: 2021/03/18 11:32:49 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int get_key(void)
 {
 	unsigned int key_pressed = 0;
 
-	read(0, &key_pressed, 1);
-	if (key_pressed == 0x1b)
-		read(0, ((void *)(&key_pressed)) + 1, MAX_KEY_LEN - 1);
+	// read(0, &key_pressed, 1);
+	// if (key_pressed == 0x1b)
+	// 	read(0, ((void *)(&key_pressed)) + 1, MAX_KEY_LEN - 1);
+		read(0, ((void *)(&key_pressed)) , MAX_KEY_LEN );
 	return (key_pressed);
 }
 
